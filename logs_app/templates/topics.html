@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 style="text-align: center;">Topics</h2>
+
+    <ul style="text-align: center; list-style: inside">
+        {% for topic in topics %}
+            <li style="text-align: center;"><a href="{% url 'logs_app:topic' topic.text %}">{{ topic }}</a></li>
+            {% empty %}
+                <li>No topics have been added yet</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">{{ topic }}</h2>
+
+<ul style="text-align: center; list-style: inside">
+    {% for entry in entries %}
+        <li style="text-align: center;">
+            <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+        </li>
+        {% empty %}
+            <li>There are no entries for this topic yet</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
