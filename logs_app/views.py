@@ -19,5 +19,5 @@ def topic(request, topic_name):
     topic = Topic.objects.get(text=topic_name)
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
-    return render(request, 'topics.html', context)
+    return render(request, 'topic.html', context)
 

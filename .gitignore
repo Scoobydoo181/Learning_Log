@@ -1,0 +1,4 @@
+__pycache__
+logs_app/migrations
+learning_log/__init__.py
+logs_app/__init__.py
