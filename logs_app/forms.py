@@ -1,9 +1,15 @@
 from django import forms
 
-from models import Topic
+from logs_app.models import Topic, Entry
 
 class TopicForm(forms.ModelForm):
     class Meta():
         model = Topic
         fields = ['text']
         labels = {'text': ''}
+
+class EntryForm(forms.ModelForm):
+    class Meta():
+        model = Entry
+        fields = ['topic', 'text']
+        

@@ -2,12 +2,13 @@
 
 from django.urls import path
 
-from logs_app import views
+from . import views
 
 app_name = 'logs_app'
 urlpatterns = [
     path('', views.index, name='index'),
     path('topics/', views.topics, name='topics'),
     path('topics/<str:topic_name>/', views.topic, name="topic"),
+    path('new-topic/', views.new_topic, name='new_topic'),
 
 ]

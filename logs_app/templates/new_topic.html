@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 style="text-align: center;">Add a new topic</h2>
+
+    <form action="{% url 'logs_app:new_topic' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Add Topic</button>
+    </form>
+{% endblock content %}
