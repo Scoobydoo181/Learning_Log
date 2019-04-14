@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from logs_app.models import Topic
-from logs_app.forms import TopicForm
+from .models import Topic
+from .forms import TopicForm, EntryForm
 
 # Create your views here.
 def index(request):
@@ -38,4 +38,27 @@ def new_topic(request):
             form.save()
             return HttpResponseRedirect(reverse('logs_app:topics'))
 
+def new_entry(request, topic_name):
+    """Create a new entry in a topic"""
+    
+    topic = Topic.objects.get(text=topic_name)
+    
+    if request.method != 'POST':
+        #Return blank form
+        form = EntryForm()
+        context = {'topic': topic, 'form': form}
+        return render(request, 'new_entry.html', context)
+    else:
+        #Send to database
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic
 
+            new_entry.save()
+
+            return HttpResponseRedirect(reverse('logs_app:topic', args=[topic_name]))
+
+def edit_entry(request, topic_name, entry_id):
+    """Load current content of an entry and allow it to be changed"""
+    pass

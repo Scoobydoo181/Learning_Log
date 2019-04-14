@@ -3,7 +3,8 @@
 {% block content %}
 <h2 style="text-align: center;">{{ topic }}</h2>
 
-<h2 style="text-align: center;">Entries</h2>
+<h3 style="text-align: center;">Entries</h2>
+<h3 style="text-align: right;"><a href="{% url 'logs_app:new_entry' topic.text %}">Add new entry</a></h2>
 
 <ul style="text-align: center; list-style: inside">
     {% for entry in entries %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="text-align: center;">{{ topic.text }}</h2>
+    <h2 style="text-align: center;">Edit an entry</h2>
+    
+    <form action="{% url 'logs_app:edit_entry' topic.text entry.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Save changes</button>
+    </form>
+{% endblock content %}
